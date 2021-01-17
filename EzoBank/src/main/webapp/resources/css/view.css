@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+
+body{
+	background-image: url(../resources/img/bank_building.jpg);
+    background-size: cover; 
+    height: 1000px;
+	}
+	
+	
+
+.box{
+  width: 400px;
+  padding: 40px;
+  position: absolute;
+  top: 450px;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: #212121;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 20px;
+}
+	
+	
+.box h1{
+  color: white;
+  font-weight: 500;
+}
+
+
+#content{
+	 border:0;
+  background: none;
+  display: block;
+  margin: 5px auto;
+  text-align: center;
+  border: 2px solid #3498db;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+	
+	
+	
+}
+
+
+
+
+.detail_btn input[type="button"]{
+  border:0;
+  background: none;
+  margin: 5px auto;
+  border: 2px solid #2ecc71;
+  padding: 10px 40px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+  margin: 20px 0;
+}
+
+.detail_btn input[type="button"]:hover{
+  background: #2ecc71;
+}
+
+
+.box a{
+  text-decoration: none;
+  border:0;
+  background: none;
+  display: block;
+  margin: 5px auto;
+  text-align: center;
+  border: 2px solid #FF7171;
+  padding: 5px 5px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.box a:hover{
+  background: #FF7171;
+}
+
+#footer{	
+	  width: 100%;
+	  height:70px;
+	  position: absolute;
+	  top: 900px;
+	  left: 50%; 
+	  transform: translate(-50%,-50%);
+	  bottom:0;
+} 
+
+
+
+	
+/* 	
+.box{
+		background-image: url("https://imagescdn.gettyimagesbank.com/500/201607/a10517270.jpg");
+	 	 background-position: center;
+            background-size: cover;
+	 	
+	 	width: 500px;
+	 	height: 300px;
+	 	margin: 150px auto;
+	 	
+	}
+	
+	#title{
+		font-family: 'Do Hyeon', sans-serif;
+		font-size: xx-large;
+		padding-left: 40px;
+		padding-top: 20px;
+		
+	}
+	
+	#con1{
+		margin-left:220px;
+		margin-top: 10px;
+	}
+	
+	#con2{
+		margin-top: 125px;
+		margin-left: 75px;
+	}
+	
+	#con3{
+		margin-top: 40px;
+		margin-left: 220px;
+	}
+	
+	#content p{
+		font-family: 'Nanum Gothic', sans-serif;
+		
+		font-size: large;
+		margin-bottom: 0px;
+		position: absolute; 
+	}
+
+	#det{
+		margin-left: 230px;
+		margin-top: 125px;
+		border-radius: 10px;
+		
+	} */

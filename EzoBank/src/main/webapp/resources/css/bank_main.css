@@ -1,0 +1,143 @@
+@charset "UTF-8";
+
+body{
+    background-image: url(resources/img/bank_building.jpg);
+    background-size: cover;
+    height: 1000px;
+}
+
+/* 메인박스 1  */
+.main_box1{
+	  width: 100%;
+	  margin-left:-20px;
+	  height:300px;
+	  padding: 40x;
+	  position: absolute;
+	  top: 380px;
+	  left: 50%; 
+	  transform: translate(-50%,-50%);
+	  background: #212121;
+	  text-align: center;
+	  padding: 20px;
+	  z-index: 2;
+	  
+}
+
+.sub_box{
+	  width: 80%;
+	  height:300px; 
+	  position: absolute;
+	  top: 155px;
+	  left: 50%;
+	  transform: translate(-50%,-50%);
+	  text-align: center;
+	  padding: 20px;
+}
+
+#title{
+	font-size: 40px;
+	font-weight: bold;
+	margin-top: 20px;
+	float: left;
+	color:#47C83E;
+	position:absolute;
+	left:4%; 
+}
+
+#sub_title{
+	color: #fff;
+	font-size: 20px;
+	margin-top:60px;
+	float: left;
+	position:absolute;
+	left:4%; 
+}
+
+#main_img{ 
+	margin-top:10px;
+	right: 4%;
+	position: absolute;		
+}
+
+.function_box1{	
+	width:500px;
+	height:150px;
+	position: absolute;
+	left: 4%;
+	margin-top: 130px;
+}
+
+.function1{margin: 0; 
+		  padding: 0;
+
+}
+
+.function1{	
+	border: 1px solid #1786CD;
+	width:130px;
+	height:130px;
+	background:#1786CD;
+	margin: 5px 10px;
+	cursor:pointer;
+	text-align: center;
+	text-decoration:none;
+	color: #fff;
+	float:left; 
+    list-style: none; 
+}
+
+.function1 > a{
+	color: #fff;
+	font-weight: bold;
+}
+
+.bank_image1{ 
+	margin: 10px 15px;
+}
+
+
+/*메인 박스 2  */
+.main_box2{
+	  margin-left:-20px;
+	  width: 100%;
+	  height:200px;
+	  padding: 40xp;
+	  position: absolute;
+	  top: 700px;
+	  left: 50%; 
+	  transform: translate(-50%,-50%);
+	  background: #1786CD;
+	  text-align: center;
+	  padding: 20px;
+	  z-index: 1;
+}
+
+.function2 > a{
+	color: #fff;
+	font-weight: bold;
+}
+.function2 li{	
+	width:160px;
+	position: relative;
+	margin-top:10px;
+	margin-left:20px;
+	float: right;
+	right:5%;
+	z-index: 2;
+
+}
+
+.bank_image2{
+	margin: 10px 20px;
+}
+
+#footer{	
+	  width: 100%;
+	  height:70px;
+	  position: absolute;
+	  top: 900px;
+	  left: 50%; 
+	  transform: translate(-50%,-50%);
+	  bottom:0;
+} 
+

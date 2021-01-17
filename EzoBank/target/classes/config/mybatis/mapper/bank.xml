@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bank">
+	
+	<!--아이디 중복 체크  -->
+	<select id="bank_id_check" parameterType="java.lang.String" resultType="vo.BankVO">
+		select id from bank where id=#{id}
+	</select>
+	
+	<!--주민번호 중복체크 -->
+	<select id="back_ssn_check" parameterType="java.lang.String" resultType="vo.BankVO">
+		select * from bank where ssn=#{ssn}
+	</select>
+	
+	<!--계정 추가  -->
+	<insert id="bank_account_insert" parameterType="vo.BankVO">
+		insert into bank values(bank_seq_idx.nextval, #{name}, #{ssn}, #{tel}, #{email}, #{addr}, #{id}, #{pwd}, #{account}, 0, #{ip}, sysdate, #{postcode})
+	</insert>
+
+	<!--아이디 찾기  -->
+	<select id="bank_find_id" parameterType="java.lang.String" resultType="vo.BankVO">
+		select * from bank where name=#{name} and ssn=#{ssn} 	
+	</select>
+	
+	<!-- 비밀번호 찾기  -->
+	<select id="bank_find_pwd" parameterType="vo.BankVO" resultType="vo.BankVO">
+		select * from bank where name=#{name} and id=#{id} and ssn=#{ssn}	
+	</select>
+	
+	<!--비밀번호 변경  -->
+	<update id="bank_change_password" parameterType="java.lang.String">
+		update bank set pwd=#{pwd} where ssn=#{ssn}
+	</update>
+	
+	<!--로그인 하기 -->
+	<select id="bank_login" parameterType="vo.BankVO" resultType="vo.BankVO">
+		select * from bank where id=#{id}
+	</select>
+	
+	<!--회원 정보 수정  -->
+	<update id="bank_info_update" parameterType="vo.BankVO">		
+	update bank set pwd=#{pwd}, name=#{name}, tel=#{tel}, email=#{email}, addr=#{addr} where idx=#{idx}
+	</update>
+	
+	
+	<!-- 입금 / 출금  -->
+	<select id="bank_list" resultType="bank">
+		select * from bank
+	</select>
+	
+	<select id="bank_selectone_idx" resultType="bank" parameterType="int">
+		select * from bank where idx=#{idx}
+	</select>
+	
+	<select id="bank_selectone_acc" resultType="bank" parameterType="java.lang.String">
+		select * from bank where account=#{acc}
+	</select>
+	
+	<update id="update_deposit" parameterType="java.util.Map">
+		update bank set balance = balance + #{amount} where idx=#{idx}
+	</update>
+	
+	<update id="update_withdrawal" parameterType="java.util.Map">
+		update bank set balance = balance - #{amount} where idx=#{idx}
+	</update>
+	
+	<!-- 상세보기  -->
+	
+	<select id="bank_all" resultType="vo.BankVO" parameterType="int">	
+		select * from bank where idx = #{idx}		
+	</select>
+	
+	<select id="bank_detail" resultType="vo.BankVO" parameterType="int">
+		select * from bank where idx = #{idx}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	<!-- 처음에는 context가 활성화 되어있지 않기 때문에 아래 Namespaces에서  context를 활성화시켜줘야한다. -->
+	<!-- 어떤 DB를 쓸지 연결!!  -->
+	<context:property-placeholder
+		location = "classpath:config/mybatis/db.properties"/>
+		
+	<!--DB연결을 위한 라이브러리 객체 생성  -->
+	<!--org.apache.commons.dbcp : 패키지명  -->
+	<bean id = "ds" class ="org.apache.commons.dbcp.BasicDataSource">			
+		<!-- setDriver  -->
+		<property name="driverClassName" value = "${driver}"/>
+		<property name="url" value ="${url}"/>
+		<property name="username" value = "${user}"/>
+		<property name="password" value = "${password}"/>
+		
+		<!--최대 몇명까지 접속가능하게 할지!  -->
+		<property name="maxActive" value = "20"/>
+	</bean>
+</beans>

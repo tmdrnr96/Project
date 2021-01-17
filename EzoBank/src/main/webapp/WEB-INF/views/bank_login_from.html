@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EzoBank - Login</title>
+    
+     <link href="bank.css" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="title">
+        <a href="#">
+            <img class="title_icon" src="img/logo.png";>
+        </a>
+       
+           <ul>
+                <li><a href="#">로그인</a></li>
+                <li><a href="#">회원가입</a></li>
+                <li><a href="#">계좌상세정보</a></li>
+            </ul>
+    </div>
+    
+    
+   <div class="box">
+      <h1>로그인</h1>
+          <table align = "center">
+					<tr>						
+						<td><input type="text" class = "log" name = "id" placeholder="User ID" ></td>
+					</tr>
+					<tr>						
+						<td><input class = "log" type = "password" name = "pwd" placeholder="User Password"></td>
+					</tr>
+					
+					<tr>
+						<td align = "center">
+							<input type = "button" class = "btn_log" value = "Log In" onclick = "sign(this.form);" >					
+						</td>
+					</tr>	
+				</table>
+      <div id = "find" align = "center">
+			<a class = "f" href = "javascript:f_id();">Forgot Account ?</a>
+            
+            <a  class = "f" href = "javascript:f_pwd();">Forgot Password ?</a>		
+		</div>
+		
+		<div id = "join" align = "center">
+			  <a class = "j" href = "join_form.do;"> Sign up for an Account </a>	
+		</div>
+      
+    </div>
+    
+</body>
+</html>
