@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+
+
+.foot{
+	position:absolute;
+	bottom:-75px;/* 수정 */
+	background: gray;
+	width: 100%;
+	height: 75px;
+	/* margin-top: 1040px; */
+	margin-left: -50px;
+	padding: 30px;	
+	right: 0%;
+}
+
+.footer_box {
+	background:grey;
+	width: 1000px;
+	height: 50px;
+	padding: 0, 50%;
+	}
+	
+
+
+.footer_box1 {
+	margin: 0 5px;
+	background: black;
+
+}
+
+.footer_box1 > ul li{
+	left:20%;
+	font-size:12px;
+	margin: 5px 5px;
+	float: left;	
+	position: relative;
+	
+}
+
+.footer_box1 > ul li a{
+	color: #fff;
+	
+}
+
+.footer_box2 > ul li{
+	right:40%;
+	left:23%;
+	color:#fff;
+	font-size:12px;
+	margin: 2px 15px;
+	position: relative;
+	float: left;
+}
+
+#main_up{
+	margin: 50px;
+}
+
+#call{
+	font-size: 17px;
+}
+
+.footer_box3 > ul li{
+
+	margin:5px 10px;
+	position: relative;
+	float: right;
+	}
