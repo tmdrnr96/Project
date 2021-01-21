@@ -8,12 +8,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.SessionScope;
 
 import common.Common;
 import common.MyCommon;
@@ -32,6 +37,12 @@ public class BankController {
 	
 	@Autowired
 	DetailDAO detaildao; //detail table DAO
+	
+	@Autowired
+	HttpServletRequest request;
+	
+	@Autowired
+	HttpSession session;
 	
 	//입금 페이지
 	//로그인을 완료했으면 idx를 파라미터로 반드시 받아야 함
@@ -202,6 +213,8 @@ public class BankController {
 	//거래내역 상세보기
 	@RequestMapping("/det.do")
 	public String bank_detail(Model model, String account, Integer page, Integer term) {
+		//세션에서 값가져오기		
+		BankVO bankvo = (BankVO)session.getAttribute("user");
 		
 		int nowPage = 1; //기본페이지는 1페이지로
 		
@@ -213,31 +226,26 @@ public class BankController {
 		int start = (nowPage - 1)*Common.BoardView.BLOCKLIST + 1;
 		int end = start + Common.BoardView.BLOCKLIST - 1;
 		
-		//START와 END를 MAP에 저장
-		Map<String, Integer> map = new HashMap<String,Integer>();
-		map.put("start", start);
-		map.put("end", end);
-		
-		List<DetailVO> list2 = detail_dao.selectList(map);
-		
+		DetailVO vo = new DetailVO();		
+		vo.setStart(start);
+		vo.setEnd(end);
+		//session에 저장되어 있는 Account값 VO에 저장!
+		vo.setAccount(bankvo.getAccount());
 		
 		//전체 게시물의 갯수
-		int row_total = detail_dao.getRowTotal(account);
-		System.out.println("row_t:" + row_total);
-		System.out.println("acc:" + account);
+		int row_total = detail_dao.getRowTotal(bankvo.getAccount());
+		
+		System.out.println(row_total);
+		System.out.println(nowPage);
 		
 		//페이지 하단 메뉴 생성하기
 		String pageMenu = Paging.getPaging(
 				"det.do", nowPage, row_total, 
-				Common.BoardView.BLOCKLIST, 
-				Common.BoardView.BLOCKPAGE);
-		
-		
-		model.addAttribute("list", list2);
+				Common.BoardView.BLOCKLIST, /* 5 */
+				Common.BoardView.BLOCKPAGE); /* 3 */
+
 		model.addAttribute("pageMenu", pageMenu);
-		
-		
-		
+
 		// term : 조회 기간 
 		List<DetailVO> list = null;
 		Date today = new Date();
@@ -263,8 +271,9 @@ public class BankController {
 	    }
 	    
 		if (term == 0) {
-			list = detail_dao.selectView();
+			list = detail_dao.selectList(vo);
 			
+			//1개월
 		} else if( term == 10){
 			
 			if(month == 01) { 
@@ -274,14 +283,15 @@ public class BankController {
 			}else {
 			
 				re_mon = month - 1;
+				re_year = year;
 			}
 
 			re_date = re_mon +"/"+ day +"/"+ re_year;
 			
 			list = detail_dao.selectTerm(re_date);
 
+			//3개월 			
 		} else {
-						
 			if (month == 01) {
 				re_mon = 10;
 				re_year = year-1;
@@ -291,7 +301,7 @@ public class BankController {
 			
 			re_date = re_mon+"/"+day+"/"+re_year;
 					
-			list2 = detail_dao.selectTerm(re_date);
+			list = detail_dao.selectTerm(re_date);
 
 		}
 		
@@ -302,50 +312,35 @@ public class BankController {
 			
 	}
 
-	
-	@RequestMapping("/detail_view.do")
-	public String detail_view(Model model, String account, int term,Integer page ) {
-		
-		int nowPage = 1; //기본페이지는 1페이지로
-		
-		if (page != null) {
-			nowPage = page;
-		}
-		
-		//한 페이지에 표시될 게시물의 시작과 끝번호를 계산
-		int start = (nowPage - 1)*Common.BoardView.BLOCKLIST +1;
-		int end = start + Common.BoardView.BLOCKLIST -1;
-		//START와 END를 MAP에 저장
-		Map<String, Integer> map = new HashMap<String,Integer>();
-		map.put("start", start);
-		map.put("end", end);
-		
-		List<DetailVO> list = detail_dao.selectList(map);
-		
-		//전체 게시물의 갯수
-				int row_total = detail_dao.getRowTotal(account);
-				System.out.println("row_t:" + row_total);
-				System.out.println("acc:" + account);
-
-				
-		String pageMenu = Paging.getPaging(
-				"det.do", nowPage, row_total, 
-				Common.BoardView.BLOCKLIST, 
-				Common.BoardView.BLOCKPAGE
-				);
-		
-		model.addAttribute("pageMenu", pageMenu);
-		//여기서는 페이지 관련된 처리를 전혀 안하고 있어서 그렇습니다~
-		//여기서 페이지 메뉴 만들면 되겠네요~  위에 det.do처럼요!! 네 알겠습니다
-		//넵 화이팅!
-		List<DetailVO>s_list=null;
-		
-		
-		
-		model.addAttribute("list", s_list);
-		
-		return MyCommon.Detail.VIEW_PATH + "bank_detail.jsp";
-	}
+	/*
+	 * @RequestMapping("/detail_view.do") public String detail_view(Model model,
+	 * String account, int term,Integer page ) {
+	 * 
+	 * int nowPage = 1; //기본페이지는 1페이지로
+	 * 
+	 * if (page != null) { nowPage = page; }
+	 * 
+	 * //한 페이지에 표시될 게시물의 시작과 끝번호를 계산 int start = (nowPage -
+	 * 1)*Common.BoardView.BLOCKLIST +1; int end = start +
+	 * Common.BoardView.BLOCKLIST -1;
+	 * 
+	 * DetailVO vo = new DetailVO();
+	 * 
+	 * vo.setStart(start); vo.setEnd(end); vo.setAccount(account);
+	 * 
+	 * List<DetailVO> list = detail_dao.selectList(vo);
+	 * 
+	 * //전체 게시물의 갯수 int row_total = detail_dao.getRowTotal(account);
+	 * 
+	 * String pageMenu = Paging.getPaging( "detail_view.do", nowPage, row_total,
+	 * Common.BoardView.BLOCKLIST, Common.BoardView.BLOCKPAGE );
+	 * 
+	 * model.addAttribute("list", list); model.addAttribute("pageMenu", pageMenu);
+	 * //여기서는 페이지 관련된 처리를 전혀 안하고 있어서 그렇습니다~ //여기서 페이지 메뉴 만들면 되겠네요~ 위에 det.do처럼요!! 네
+	 * 알겠습니다 //넵 화이팅! //List<DetailVO>s_list=null;
+	 * 
+	 * return MyCommon.Detail.VIEW_PATH + "bank_detail.jsp"; }
+	 */
 	
 	
 	

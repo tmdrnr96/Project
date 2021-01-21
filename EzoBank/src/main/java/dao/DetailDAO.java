@@ -14,29 +14,18 @@ public class DetailDAO {
 
 	@Autowired
 	SqlSession sqlSession;
-		
-		//전체조회
-	    public List<DetailVO> selectView(){
-		List<DetailVO> list = sqlSession.selectList("d.detail");
-		return list;
-        }
-	
-		//오버로드
-		public List<DetailVO> selectView(String account){
-		List<DetailVO> list = sqlSession.selectList("d.detail_list", account);
-		return list;
-		}
-	
+					
+			
 	    //계좌 입금, 출금, 이체 시에 데이터 저장
 		public int insert_detail(DetailVO vo) {			
 		int res = sqlSession.insert("d.detail_insert",vo);					
 			return res;
 		}
 		
-		public List<DetailVO> selectList( Map<String, Integer> map ){
+		public List<DetailVO> selectList( DetailVO vo ){
 			 
 			 List<DetailVO> list = null; 
-			 list = sqlSession.selectList("d.detail_list_condition", map);
+			 list = sqlSession.selectList("d.detail_list_condition", vo);
 			 return list; 
 			}
 		

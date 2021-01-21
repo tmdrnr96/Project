@@ -8,6 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id="detail" resultType="vo.DetailVO">
  		select * from detail	
  	</select>
+ 	
    
   	<!-- 계좌별 조회 --> 
   	<select id="detail_list" resultType="vo.DetailVO" parameterType="int"> <!-- int를 제외한 클래스 타입의 파라미터 타입일땐, 위치 까지 작성해줘야 함java.lang.String -->
@@ -21,9 +22,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<!-- 페이지별 게시글 조회 -->	
-	<select id="detail_list_condition" resultType="vo.DetailVO" parameterType="java.util.Map">
-	
-		select * from ( select rank() over( order by usedate desc ) no, b.* from(select * from detail) b) where no between #{start} and #{end}	
+	<select id="detail_list_condition" resultType="vo.DetailVO" parameterType="vo.DetailVO">
+		select * from ( select rank() over( order by usedate desc ) no, b.* from(select * from detail ) b ) where account = #{account} and no between #{start} and #{end}
 	</select>
 	
 	
@@ -35,9 +35,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</select>
 	
+	<!-- 해당하는 달이 유효하지 않다고 나옴...  -->
 	<select id="detail_term" resultType="vo.DetailVO" parameterType="java.lang.String">
 	
-		select * from detail where TO_DATE(USEDATE,'MM/DD/YYYY') &lt;= TO_DATE(#{re_date},'MM/DD/YYYY')
+		select * from detail where USEDATE &lt;= TO_DATE(#{re_date},'MM/DD/YYYY')
 	
 	</select>
 	

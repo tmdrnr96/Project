@@ -21,6 +21,7 @@ public class Paging {
 		totalPage = (int)(rowTotal/blockList);
 		if(rowTotal%blockList!=0)totalPage++;
 		
+		System.out.println("totalpage:"+totalPage);
 
 		//만약 잘못된 연산과 움직임으로 인하여 현재 페이지 수가 전체 페이지 수를
 		//넘을 경우 강제로 현재페이지 값을 전체 페이지 값으로 변경
@@ -29,7 +30,12 @@ public class Paging {
 
 		//시작 페이지와 마지막 페이지를 구함.
 		startPage = (int)(((nowPage-1)/blockPage)*blockPage+1);
+		
+		System.out.println("startpage:"+startPage);
+		
 		endPage = startPage + blockPage - 1; //
+		
+		System.out.println("endpage : "+endPage);
 		
 		//마지막 페이지 수가 전체페이지수보다 크면 마지막페이지 값을 변경
 		if(endPage > totalPage)endPage = totalPage;
