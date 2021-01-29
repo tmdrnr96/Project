@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/chat_content_linear">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher_round"
+        android:id="@+id/user_img"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="left"
+        android:id="@+id/op_chat_linear">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="fbgkwns"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/op_u_name"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:maxWidth="250dp"
+                android:layout_height="wrap_content"
+                android:text="안녕하세요"
+                android:textSize="20dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/op_chat_textbox"
+                android:padding="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/op_chat_content"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:text="오후 11:32"
+                android:id="@+id/op_chat_time"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="right"
+        android:layout_weight="1"
+        android:layout_margin="8dp"
+        android:id="@+id/my_chat_linear">
+
+        <!--상대가 읽었는지 판단하려고 만들었다가 시간부족으로 주석-->
+        <!--<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="1"
+            android:gravity="bottom"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="1dp"
+            android:id="@+id/readCheck_txt"/>-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginRight="5dp"
+            android:text="오후 11:32"
+            android:id="@+id/my_chat_time"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:maxWidth="250dp"
+            android:layout_height="wrap_content"
+            android:text="안녕하세요"
+            android:textSize="20dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/my_chat_textbox"
+            android:padding="10dp"
+            android:id="@+id/my_chat_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>

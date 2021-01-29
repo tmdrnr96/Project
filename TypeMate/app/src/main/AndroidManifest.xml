@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mbti.typemate">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_icon_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".IntroActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ChatRoomActivity"></activity>
+        <activity android:name=".PwdResetActivity" />
+        <activity android:name=".FindPwdActivity" />
+        <activity android:name=".FindAccountActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".JoinActivity" />
+        <activity android:name=".ChatActivity" />
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".MbtiActivity" />
+        <activity android:name=".ProfileModifyActivity"/>
+        <activity android:name=".MbtiModifyActivity"/>
+        <activity android:name=".MbtiTestActivity"/>
+    </application>
+
+</manifest>

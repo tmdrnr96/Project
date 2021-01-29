@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "546004591088",
+    "firebase_url": "https://typemate-95306.firebaseio.com",
+    "project_id": "typemate-95306",
+    "storage_bucket": "typemate-95306.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546004591088:android:d0e4d9dbd94da1ee56bd35",
+        "android_client_info": {
+          "package_name": "com.mbti.typemate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "546004591088-82j1dshe84ua4sq59t66c93q4ntqb1vj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8gNP6N41zWWH4OAefox-RnhscdnApmsE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "546004591088-82j1dshe84ua4sq59t66c93q4ntqb1vj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

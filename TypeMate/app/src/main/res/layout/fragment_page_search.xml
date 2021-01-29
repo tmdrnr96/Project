@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- 타이틀 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#fff">
+
+            <ImageButton
+                android:id="@+id/btn_mbti_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:background="#00ffffff"
+                android:src="@drawable/ic_mbti_info" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Search"
+                android:textColor="@color/colorDefault"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btn_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/ic_search_filter"
+                android:rotation="90" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#ddd" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/search_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#fff"
+                android:divider="#ffffff" />
+
+            <WebView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:id="@+id/web_mbti_info"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <!-- 서랍으로 사용할 layout -->
+    <LinearLayout
+        android:id="@+id/drawer"
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#fff"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="검색할 조건을\n선택하세요." />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="gender"
+                    android:textColor="#777"
+                    android:textSize="20dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/btn_man"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/search_drawer_btn"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="남자" />
+
+                    <CheckBox
+                        android:id="@+id/btn_woman"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/search_drawer_btn"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="여자" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/select_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="10dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="mbti"
+                    android:textColor="#777"
+                    android:textSize="20dp" />
+
+                <!-- mbti  -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/btn_mbti1"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/search_drawer_btn"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="ISTJ" />
+
+                    <CheckBox
+                        android:id="@+id/btn_mbti2"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/search_drawer_btn"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="ISFJ" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/btn_mbti3"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/search_drawer_btn"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="INFJ" />
+
+                    <CheckBox
+                        android:id="@+id/btn_mbti4"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/search_drawer_btn"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="INTJ" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/btn_mbti5"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/search_drawer_btn"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="ISTP" />
+
+                    <CheckBox
+                        android:id="@+id/btn_mbti6"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/search_drawer_btn"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="ISFP" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/btn_mbti7"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/search_drawer_btn"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="INFP" />
+
+                    <CheckBox
+                        android:id="@+id/btn_mbti8"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/search_drawer_btn"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="INTP" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/btn_mbti9"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/search_drawer_btn"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="ESTJ" />
+
+                    <CheckBox
+                        android:id="@+id/btn_mbti10"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/search_drawer_btn"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="ESFJ" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/btn_mbti11"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/search_drawer_btn"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="ENFJ" />
+
+                    <CheckBox
+                        android:id="@+id/btn_mbti12"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/search_drawer_btn"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="ENTJ" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/btn_mbti13"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/search_drawer_btn"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="ESTP" />
+
+                    <CheckBox
+                        android:id="@+id/btn_mbti14"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/search_drawer_btn"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="ESFP" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/btn_mbti15"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/search_drawer_btn"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="ENFP" />
+
+                    <CheckBox
+                        android:id="@+id/btn_mbti16"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/search_drawer_btn"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="ENTP" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="bottom|center_horizontal">
+
+                <Button
+                    android:id="@+id/btn_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorDefault"
+                    android:gravity="center"
+                    android:text="검색" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+    </LinearLayout><!-- 서랍으로 사용할 layout 끝 -->
+
+</androidx.drawerlayout.widget.DrawerLayout>
