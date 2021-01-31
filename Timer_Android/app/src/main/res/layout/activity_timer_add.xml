@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TimerAddActivity"
+    android:orientation="vertical"
+    android:background="#434343">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#434343">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="취소"
+            android:id="@+id/btn_cancel"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:background="#00ff0000"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="새 타이머 추가"
+            android:textSize="25dp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="7dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="추가"
+            android:id="@+id/btn_add"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="#79E37D"
+            android:background="#00ff0000"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/newTimer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
