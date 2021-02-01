@@ -1,6 +1,8 @@
 package vo;
 
-public class TimerAddVO {
+import java.io.Serializable;
+
+public class TimerAddVO implements Serializable {
 
     private String title;
     private String sub_title;

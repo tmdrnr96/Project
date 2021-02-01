@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TimePicker"
+    tools:context=".TimeSetActivity"
     android:orientation="vertical"
     android:background="#434343">
 
@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="뒤로"
-            android:id="@+id/btn_cancel"
+            android:id="@+id/btn_back"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:textStyle="bold"
@@ -33,13 +33,14 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="7dp"/>
+            android:layout_marginTop="7dp"
+            android:id="@+id/p_title"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="완료"
-            android:id="@+id/btn_add"
+            android:id="@+id/btn_result"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:textStyle="bold"
@@ -49,12 +50,57 @@
 
     </RelativeLayout>
 
-    <TimePicker
-        android:id="@+id/timePicker"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
         android:gravity="center"
-        android:timePickerMode="spinner"
-        android:minWidth="500dp"/>
+        android:background="#595959">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/min_edit"
+        android:ems="2"
+        android:textColor="#fff"
+        android:maxLength="2"
+        android:gravity="center"
+        android:backgroundTint="#FFF"
+        android:textSize="40dp"
+        android:text="00"
+        android:inputType="number"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="분"
+        android:textColor="#fff"
+        android:textSize="60dp"
+        android:textStyle="bold"/>
+
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sec_edit"
+            android:layout_marginLeft="10dp"
+            android:ems="2"
+            android:textColor="#fff"
+            android:maxLength="2"
+            android:gravity="center"
+            android:backgroundTint="#FFF"
+            android:textSize="40dp"
+            android:text="01"
+            android:inputType="number"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="초"
+            android:textColor="#fff"
+            android:textSize="60dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
 
 </LinearLayout>
