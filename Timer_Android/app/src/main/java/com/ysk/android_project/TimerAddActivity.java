@@ -45,28 +45,19 @@ public class TimerAddActivity extends AppCompatActivity {
         vo = new TimerAddVO();
         list = new ArrayList<TimerAddVO>();
 
-        list.add(new TimerAddVO("준비", "시작하기 전 카운트다운","00:01"));
-        list.add(new TimerAddVO("운동", "오래운동하기","00:01"));
-        list.add(new TimerAddVO("휴식", "오래휴식하기","00:01"));
-        list.add(new TimerAddVO("라운드", "1 라운드는 운동 + 휴식입니다.","1"));
+        pref = getSharedPreferences("SHARE",MODE_PRIVATE);
+        SharedPreferences.Editor save = pref.edit();
+
+
+        //값 저장, 공유된 값 불러오기
+        list.add(new TimerAddVO("준비", "시작하기 전 카운트다운",pref.getString("time1","00:01")));
+        list.add(new TimerAddVO("운동", "오래운동하기",pref.getString("time2","00:01")));
+        list.add(new TimerAddVO("휴식", "오래휴식하기",pref.getString("time3","00:01")));
+        list.add(new TimerAddVO("라운드", "1 라운드는 운동 + 휴식입니다.",pref.getString("time4","1")));
 
 
         adapter = new ViewModelAdapter(TimerAddActivity.this,R.layout.timer_item, list, newTimer);
         newTimer.setAdapter(adapter);
-
-        //쉐어드 프리페어
-        pref = getSharedPreferences("SHARE",MODE_PRIVATE);
-
-        if(pref.getInt("check",0) != 0) {
-            list.get(pref.getInt("index", 0)).setTimer(pref.getString("time","00:00"));
-
-            Toast.makeText(TimerAddActivity.this,list.get(1).getTimer(),Toast.LENGTH_SHORT).show();
-        } else{
-            Toast.makeText(TimerAddActivity.this,"값이 없음",Toast.LENGTH_SHORT).show();
-        }
-
-        //값 불러오기
-
 
 
         //추가버튼
@@ -74,6 +65,7 @@ public class TimerAddActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //시간 추가 페이지로 이동
+
 
             }
         });
@@ -97,12 +89,14 @@ public class TimerAddActivity extends AppCompatActivity {
                     intent = new Intent(TimerAddActivity.this,RoundSetActivity.class);
                     intent.putExtra("list",list);
                     startActivity(intent);
+                    finish();
 
                 }else{
                     intent = new Intent(TimerAddActivity.this,TimeSetActivity.class);
                     intent.putExtra("title",vo.getTitle());
                     intent.putExtra("list",list);
                     startActivity(intent);
+                    finish();
                 }
             }
         });

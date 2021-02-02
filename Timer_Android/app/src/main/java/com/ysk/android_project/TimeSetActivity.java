@@ -18,8 +18,6 @@ import vo.TimerAddVO;
 
 public class TimeSetActivity extends AppCompatActivity {
 
-
-
     EditText min_edit,sec_edit;
     Button btn_result, btn_back;
     TextView p_title;
@@ -30,7 +28,6 @@ public class TimeSetActivity extends AppCompatActivity {
     ArrayList<TimerAddVO> list;
 
     SharedPreferences pref;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +49,10 @@ public class TimeSetActivity extends AppCompatActivity {
         title = (String) intent.getStringExtra("title");
         list = (ArrayList<TimerAddVO>)intent.getSerializableExtra("list");
 
+        pref = getSharedPreferences("SHARE",MODE_PRIVATE);
+
+        SharedPreferences.Editor save = pref.edit();
+
         //페이지 title명  변경
         p_title.setText(title);
 
@@ -61,7 +62,7 @@ public class TimeSetActivity extends AppCompatActivity {
 
                intent = new Intent(TimeSetActivity.this,TimerAddActivity.class);
 
-               //값이.. 아무것도 없을 때 오류 방지 (00:01를 기본으로 설정)
+               //값이 없을 때 오류 방지 (00:01를 기본으로 설정)
                 if(min_edit.length() < 1){
                     min_edit.setText("00");
                 }
@@ -96,22 +97,21 @@ public class TimeSetActivity extends AppCompatActivity {
                 for(int i = 0; i < list.size(); i++ ){
 
                     if(list.get(i).getTitle().equals(title)){
-                        list.get(i).setTimer(time);
 
-                        Toast.makeText(TimeSetActivity.this,list.get(i).getTitle(),Toast.LENGTH_SHORT).show();
-                        Toast.makeText(TimeSetActivity.this,time,Toast.LENGTH_SHORT).show();
-                        Toast.makeText(TimeSetActivity.this,list.get(2).getSub_title(),Toast.LENGTH_SHORT).show();
+                        switch(list.get(i).getTitle()){
 
-                        pref = getSharedPreferences("SHARE",MODE_PRIVATE);
+                            case "준비":
+                                save.putString("time1",time);
+                                break;
+                            case "운동":
+                                save.putString("time2",time);
+                                break;
+                            case "휴식":
+                                save.putString("time3",time);
+                                break;
+                        }
 
-                        SharedPreferences.Editor save = pref.edit();
-
-                        save.putInt("check", 1);
-                        save.putInt("index", i);
-                        save.putString("time",time);
                         save.commit();
-
-                        intent.putExtra("list",list);
 
                     }
 
@@ -124,12 +124,11 @@ public class TimeSetActivity extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intent = new Intent(TimeSetActivity.this,TimerAddActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
-
-
-
 
     }
 

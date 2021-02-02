@@ -3,6 +3,7 @@ package com.ysk.android_project;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,8 @@ public class RoundSetActivity extends AppCompatActivity {
 
     String round;
 
+    SharedPreferences pref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,9 @@ public class RoundSetActivity extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                intent = new Intent(RoundSetActivity.this,TimerAddActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -59,14 +65,19 @@ public class RoundSetActivity extends AppCompatActivity {
                 for(int i = 0; i < list.size(); i++ ){
 
                     if(list.get(i).getTitle().equals("라운드")){
-                        list.get(i).setTimer(round);
-                        intent.putExtra("index",i);
-                        intent.putExtra("list",list);
+
+                        pref = getSharedPreferences("SHARE",MODE_PRIVATE);
+
+                        SharedPreferences.Editor save = pref.edit();
+
+                        save.putString("time4",round);
+                        save.commit();
                     }
 
                 }
                 startActivity(intent);
                 finish();
+
             }
         });
 

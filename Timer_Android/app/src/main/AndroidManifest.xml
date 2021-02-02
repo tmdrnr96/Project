@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_Project">
+
         <activity android:name=".RoundSetActivity"></activity>
         <activity android:name=".TimeSetActivity" />
         <activity android:name=".TimerAddActivity" />
